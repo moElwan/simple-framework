@@ -6,7 +6,7 @@
  * @author    mesee1@gmail.com
  */
 
-class User
+class User extends Illuminate\Database\Eloquent\Model
 {
     private $name = '';
 
