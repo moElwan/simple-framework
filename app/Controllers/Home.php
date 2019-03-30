@@ -12,4 +12,13 @@ class Home extends Controller
     {
         echo 'Home/index';
     }
+
+    public function name($newName)
+    {
+        if (!empty($newName)) {
+            $user = $this->model('User');
+            $user->setName($newName );
+            echo '<h1>' . $user->getName() . '</h1>';
+        }
+    }
 }

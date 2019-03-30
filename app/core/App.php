@@ -15,11 +15,11 @@ class App
     public function __construct()
     {
         $url = $this->parseUrl();
-        if (isset($url[0]) && file_exists($this->coreDir() . '/Controllers/' . ucfirst($url[0]) . '.php')) {
+        if (isset($url[0]) && file_exists($this->baseDir() . '/Controllers/' . ucfirst($url[0]) . '.php')) {
             $this->controllerName = ucfirst($url[0]);
             unset($url[0]);
         }
-        require_once $this->coreDir() . '/Controllers/' . $this->controllerName . '.php';
+        require_once $this->baseDir() . '/Controllers/' . $this->controllerName . '.php';
         $controller = new $this->controllerName;
 
         if (isset($url[1]) && method_exists($controller, $url[1])) {
@@ -50,7 +50,7 @@ class App
     /**
      * @return string
      */
-    public function coreDir()
+    public function baseDir()
     {
         return dirname(__DIR__);
     }
