@@ -10,7 +10,7 @@ class Controller
 {
     /**
      * @param $name
-     * @return null
+     * @return null|mixed
      */
     protected function model($name)
     {
@@ -29,5 +29,13 @@ class Controller
     public function baseDir()
     {
         return dirname(__DIR__);
+    }
+
+    protected function view($view, $data = [])
+    {
+        $viewFilePath = $this->baseDir() . '/views/' . $view . '.php';
+        if (file_exists($viewFilePath)) {
+            require_once $viewFilePath;
+        }
     }
 }

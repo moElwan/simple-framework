@@ -10,14 +10,14 @@ class Home extends Controller
 {
     public function index()
     {
-        echo 'Home/index';
+        $this->view('home/index', ['name' => 'Basel']);
     }
 
     public function name($newName)
     {
         if (!empty($newName)) {
             $user = $this->model('User');
-            $user->setName($newName );
+            $user->setName($newName);
             echo '<h1>' . $user->getName() . '</h1>';
         }
     }
